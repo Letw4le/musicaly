@@ -1,0 +1,1100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    display: none; 
+}
+
+body::before {
+    content: '';
+    position: fixed; 
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(60% 60% at 90% -10%, color-mix(in oklab, #5ee0d4 12%, transparent) 0%, transparent 70%),
+        radial-gradient(50% 50% at -10% 70%, color-mix(in oklab, #5ee0d4 12%, transparent) 0%, transparent 70%),
+        #0b0a08;
+}
+
+.research_page{
+    min-height: 100vh;
+}
+
+
+/*Menu*/
+#center_menu{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: center;
+    
+}
+
+#menu{
+    display:flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    width: 70vw;
+    height: 60px;
+    color: #f5f6f2;
+    margin-top: 40px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 40px;
+    font-size: 22px;
+    border: 1px solid #6b6b6b;        
+    box-shadow: 0 12px 40px rgba(0,0,0,.35); 
+    border-radius: 30px;
+    background-color: #141210;
+    color: #f3efe5;
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+#logo_menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    border-right: 1px solid rgba(255,255,255,.08);
+    padding-right: 16px; /* espace entre "musicaly" et la barre */
+
+}
+
+.symb_menu{
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #5ee0d4;; 
+    position: relative;
+    box-shadow: inset 0 0 0 4px rgba(0,0,0,.4),
+                0 0 0 1px rgba(255,255,255,.06);
+}
+
+.symb_menu::after {
+    content: '';
+    position: absolute;
+    inset: 8px; 
+    background: #0b0a08;
+    border-radius: 50%;
+}
+
+#onglets {
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+}
+
+.onglet-link, .actual_onglet{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-family:"Inter", sans-serif;
+    position: relative;
+    display: inline-block;
+}
+
+.onglet-link::after, .actual_onglet::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    width: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    background-color: #5ee0d4;
+    opacity: 0; 
+    transition: opacity 0.2s ease, width 0.2s ease-out;
+}
+
+.onglet-link:hover::after {
+    opacity: 0.5;
+    width: 50%;
+}
+
+
+.actual_onglet::after {
+    left: 0;
+    transform: translateX(0%);
+    width: 100%;
+    opacity: 1;
+}
+
+#onglet-utilisateur{
+    display: flex;
+    align-items: center;
+    gap:8px;
+}
+
+/* 
+    Headers
+*/
+
+.section-header {
+    position: relative;
+    color: #f3efe5;
+    font-size: 24px;
+    font-family: "Bricolage Grotesque", sans-serif;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(243, 239, 229, 0.2);
+    margin-bottom: 8px;
+}
+
+.section-header span {
+    position: relative;
+}
+
+.section-header span::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: -8px;
+    right: -8px;
+    height: 2px;
+    background-color: #5ee0d4;
+    z-index: 1;
+}
+
+/* 
+    Blocks
+*/
+
+.block-centered-90vw{
+    width: 90vw;
+    margin: 60px auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/*Barre de recherche*/
+#research_barre{
+    position: relative;
+    left: 5vw;
+    width: 90vw;
+    height: 60px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,.04); 
+    border: 0.5px solid rgba(255,255,255,.08);
+    border-radius: 999px;
+    
+}
+
+#research_barre input{
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: white;
+    font-size: 18px;
+}
+
+#research_barre input:focus{
+    outline: none;
+}
+
+#research_barre input::placeholder{
+    color: rgba(243,239,229,.4);
+}
+
+#research_barre svg{
+    position: absolute;
+    right: 24px;
+}
+
+/*Résultats de la recherche */
+#results{
+    width: 90vw;
+    min-height: 60px; 
+    margin: 32px auto 0;
+    font-family:"Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    color: #ffffff;
+}
+
+.one_result{
+    position: relative;
+    border: 2px solid rgba(255,255,255,.20);
+    border-radius: 16px;
+    height: 80px; 
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 16px;
+    gap: 8px;
+}
+
+.one_result img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover; 
+    margin-right:8px;
+}
+
+.result_name {
+    white-space: nowrap;
+
+}
+
+.point{
+    margin-top: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+}
+
+.result_type{
+    color:rgba(255,255,255,0.4);
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 1px;
+}
+
+.result_header {
+    position: absolute; 
+    inset: 0;           
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+.result_header:hover {
+    background: rgba(255,255,255,0.05); 
+}
+
+
+/* Artist page */
+#artist_presentation{
+    position: relative;
+    color: white;
+    font-family: "Bricolage Grotesque", sans-serif;
+    height: 400px;
+    width: 90vw;
+    left: 5vw;
+    margin-top: 40px;
+    display: flex;
+    border-radius: 22px;
+}
+
+#artist_presentation_infos{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    left: 40px;
+    top: 32px;
+    height: 335px;
+    justify-content: space-between;
+}
+
+#artist_name{
+    margin-top: 10px;
+    font-size: 56px;
+}
+
+#artist_spotify_button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    border-radius: 999px;
+    background-color: black;
+    border: solid 1px rgba(255, 255, 255, 0.20);
+    color: white;
+    height: 60px;
+    width: 165px;
+    bottom: 32px;
+    font-size: 21px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    
+}
+
+#artist_spotify_button:hover {
+    transform: scale(1.08); /* 8% plus grand au survol */
+}
+
+#artist_img{
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-53%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover; 
+}
+
+#artist_spotify_button img{
+    margin-left: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover; 
+}
+
+#artist_albums_onglet{
+    position: relative;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90vw;
+    border-bottom: #f3efe5 1px solid;
+    color: #f3efe5;
+    font-size: 24px;
+    padding-left: 14px;
+    padding-bottom: 14px;
+}
+
+#artist_albums_onglet span{
+    position: relative;
+}
+
+#artist_albums_onglet span::after {
+    content: '';
+    position: absolute;
+    bottom: -16px; 
+    left: -14px;    
+    right: -14px;   
+    height: 2px;
+    background-color: #5ee0d4;
+    z-index: 1;    /* passe par dessus la bordure blanche */
+}
+
+#artist_albums{
+    color: #f3efe5;
+    margin-top: 24px;
+    position: relative;
+    left: 5vw;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.one_album{
+    position: relative;
+    height: 250px;
+    width: 200px;
+    transition: transform 0.2s ease;
+}
+
+.one_album:hover {
+    transform: scale(1.08); /* 8% plus grand au survol */
+}
+
+.one_album img{
+    margin-left: 8px;
+    width: 180px;
+    height: 180px;
+    border-radius: 15px;
+    object-fit: cover; 
+}
+
+.one_album span{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: #f3efe5;
+    text-decoration: none;
+    text-align: center; 
+}
+
+/* Album page */
+#background{
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(60% 60% at 90% -10%, color-mix(in oklab, #5ee0d4 12%, transparent) 0%, transparent 70%),
+        radial-gradient(50% 50% at -10% 70%, color-mix(in oklab, #5ee0d4 12%, transparent) 0%, transparent 70%),
+        #0b0a08;
+}
+
+#album_presentation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    width: 90vw;
+    margin: 40px auto 0;
+    height: 350px;
+    padding: 0 60px;
+}
+
+#album_img {
+    width: 280px;
+    height: 280px;
+    border-radius: 15px;
+    object-fit: cover;
+    flex-shrink: 0; 
+}
+
+
+#album_presentation_infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 280px; 
+    color: #f3efe5;
+}
+
+#album_top_infos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+}
+
+#album_name {
+    font-size: 40px;
+    font-weight: 700;
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+#album_genres {
+    margin-left: 3px;
+    font-size: 22px;
+    color: rgba(243, 239, 229, 0.6);
+}
+
+#album_date {
+    margin-left: 3px;
+    font-size: 22px;
+    color: rgba(243, 239, 229, 0.6);
+}
+
+#album_tracks{
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    width: 90vw;
+    align-items: center;
+    margin: 0 5vw 0;
+}
+
+.one_track{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 5vw;
+    width: 100%;
+    color: rgba(243, 239, 229, 0.6);
+    height: 80px;
+    text-decoration: none;
+}
+
+
+.track_title{
+    margin-left: 48px;
+}
+
+.track_duration{
+    position: absolute;
+    right: 8px;
+}
+
+/* Page track */
+#track_presentation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    width: 90vw;
+    margin: 40px auto 0;
+    height: 350px;
+    padding: 0 60px;
+}
+
+#track_img {
+    width: 280px;
+    height: 280px;
+    border-radius: 15px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#track_presentation_infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 280px;
+    color: #f3efe5;
+}
+
+#track_top_infos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#track_name {
+    font-size: 48px;
+    font-weight: 700;
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+#track_duration, #track_date {
+    font-size: 24px;
+    color: rgba(243, 239, 229, 0.6);
+}
+
+
+/* Section avis */
+#track_review_section {
+    width: 90vw;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#track_review_header {
+    position: relative;
+    color: #f3efe5;
+    font-size: 24px;
+    font-family: "Bricolage Grotesque", sans-serif;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(243, 239, 229, 0.2);
+}
+
+#track_review_header span {
+    position: relative;
+}
+
+#track_review_header span::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: -8px;
+    right: -8px;
+    height: 2px;
+    background-color: #5ee0d4;
+    z-index: 1;
+}
+
+#track_review_input {
+    width: 100%;
+    min-height: 200px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    color: #f3efe5;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    padding: 20px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+#track_review_input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#track_review_input::placeholder {
+    color: rgba(243, 239, 229, 0.3);
+}
+
+#track_review_submit {
+    align-self: flex-end; 
+    padding: 12px 28px;
+    border-radius: 999px;
+    border: none;
+    background-color: #5ee0d4;
+    color: #0b0a08;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#track_review_submit:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+#track_stars {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 4px;
+}
+
+#track_stars input {
+    display: none; 
+}
+
+#track_stars label {
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+/* colorie l'étoile survolée et toutes celles après */
+#track_stars label:hover,
+#track_stars label:hover ~ label,
+#track_stars input:checked ~ label {
+    color: #f0c674;
+}
+
+
+#track_reviews {
+    width: 90vw;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#track_reviews_header {
+    position: relative;
+    color: #f3efe5;
+    font-size: 24px;
+    font-family: "Bricolage Grotesque", sans-serif;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(243, 239, 229, 0.2);
+    margin-bottom: 8px;
+}
+
+#track_reviews_header span {
+    position: relative;
+}
+
+#track_reviews_header span::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: -8px;
+    right: -8px;
+    height: 2px;
+    background-color: #5ee0d4;
+    z-index: 1;
+}
+
+#track_no_reviews {
+    color: rgba(243, 239, 229, 0.4);
+    font-size: 14px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.one_review {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.2s ease;
+}
+
+.one_review:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.review_header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.review_user {
+    font-weight: 600;
+    font-size: 15px;
+    color: #f3efe5;
+}
+
+.review_date {
+    font-size: 12px;
+    color: rgba(243, 239, 229, 0.4);
+    margin-left: auto;
+}
+
+.star_filled {
+    color: #f0c674;
+    font-size: 18px;
+}
+
+.star_empty {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 18px;
+}
+
+.review_comment {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(243, 239, 229, 0.8);
+}
+
+
+
+/*Page Accueil */
+#home_div {
+    width: 90vw;
+    margin: 25px auto 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+#home_text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 90vh;
+}
+
+#home_text_title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: clamp(48px, 8vw, 92px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #f3efe5;
+}
+
+#home_text_subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(243, 239, 229, 0.6);
+    max-width: 500px;
+}
+
+#home_text_buttons {
+    display: flex;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+#home_button_search {
+    display: flex;
+    align-items: center;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background-color: #5ee0d4;
+    color: #0b0a08;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#home_button_search:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+#home_button_login {
+    display: flex;
+    align-items: center;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #f3efe5;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#home_button_login:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.14);
+}
+
+#home_images {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.home_images_col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* décalage de la deuxième colonne vers le bas */
+.home_images_col:nth-child(1) {
+    margin-top: 40px;
+}
+
+.home_images_col img {
+    width: 250px;
+    height: 250px;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#home_no_reviews {
+    color: rgba(243, 239, 229, 0.4);
+    font-size: 14px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.review_track_name {
+    color: #f3efe5;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+
+/* Page Login */
+#login_div {
+    width: 400px;
+    margin: 100px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+#login_title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #f3efe5;
+    text-align: center;
+}
+
+#login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.login_input_group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login_input_group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(243, 239, 229, 0.6);
+}
+
+.login_input_group input {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    color: #f3efe5;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.login_input_group input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.login_input_group input::placeholder {
+    color: rgba(243, 239, 229, 0.3);
+}
+
+#login_error {
+    font-size: 14px;
+    color: #ff6b6b;
+    text-align: center;
+}
+
+#login_submit {
+    margin-top: 8px;
+    padding: 14px;
+    border-radius: 999px;
+    border: none;
+    background-color: #5ee0d4;
+    color: #0b0a08;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#login_submit:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+#login_register {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(243, 239, 229, 0.5);
+}
+
+#login_register a {
+    color: #5ee0d4;
+    text-decoration: none;
+}
+
+#login_register a:hover {
+    text-decoration: underline;
+}
+
+
+/* Page Register */
+#register_div {
+    width: 400px;
+    margin: 100px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+#register_title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #f3efe5;
+    text-align: center;
+}
+
+#register_form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#register_submit {
+    margin-top: 8px;
+    padding: 14px;
+    border-radius: 999px;
+    border: none;
+    background-color: #5ee0d4;
+    color: #0b0a08;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#register_submit:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+#register_login {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(243, 239, 229, 0.5);
+}
+
+#register_login a {
+    color: #5ee0d4;
+    text-decoration: none;
+}
+
+#register_login a:hover {
+    text-decoration: underline;
+}
+
+.form_error {
+    font-size: 14px;
+    color: #ff6b6b;
+    text-align: center;
+}
+
+.form_success {
+    font-size: 14px;
+    color: #5ee0d4;
+    text-align: center;
+}
+
+/* Page Profile */
+#profile_div {
+    width: 400px;
+    margin: 100px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+#profile_title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #f3efe5;
+    text-align: center;
+}
+
+#profile_subtitle {
+    font-size: 16px;
+    color: rgba(243, 239, 229, 0.6);
+}
+
+#profile_logout {
+    margin-top: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: rgba(255, 99, 99, 0.15);
+    border: 1px solid rgba(255, 99, 99, 0.3);
+    color: #ff6b6b;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#profile_logout:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 99, 99, 0.25);
+}
+
+
+
+
+/* track quand l'utilisateur n'est pas connecté */
+#track_review_login{
+    color: #f3efe5;
+    font-size: 16px;
+    font-family: "Bricolage Grotesque", sans-serif;
+    text-decoration: none;
+}
+
+/* 
+=================================================================
+Historic page
+=================================================================
+*/
+
+#historic-empty {
+    color: rgba(243, 239, 229, 0.4);
+    font-size: 14px;
+    text-align: center;
+    padding: 40px 0;
+}

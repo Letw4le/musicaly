@@ -1,0 +1,16 @@
+# Environment variables (Spotify API credentials)
+.env
+
+# Composer dependencies (restore with `composer install`)
+/vendor/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
