@@ -40,7 +40,7 @@ Le projet suit une architecture **MVC** (Modèle-Vue-Contrôleur) :
 1. Cloner le dépôt
 
    ```bash
-   git clone <url-du-depot>
+   git clone git@github.com:Letw4le/musicaly.git
    ```
 
 2. Installer les dépendances PHP
